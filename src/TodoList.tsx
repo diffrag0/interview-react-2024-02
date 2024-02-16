@@ -50,7 +50,7 @@ const TodoList = () => {
       </div>
       <ul>
         {todos.map((todo, index) => (
-          <li key={index}>
+          <li>
             <span
               style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}
               onClick={completeTodo(todo.id)}
