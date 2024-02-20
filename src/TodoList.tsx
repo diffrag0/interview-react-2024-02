@@ -7,6 +7,7 @@ const TodoList = () => {
   const [todos, setTodos] = useState([]);
   const [todoCount, setTodoCount] = useState(0);
 
+  // 저장 된 데이터를 불러옵니다.
   useEffect(() => {
     fetchTodos().then((data) => setTodos(data));
   }, [todos]);
@@ -21,7 +22,7 @@ const TodoList = () => {
 
   const completeTodo = (id) => {
     const updatedTodos = todos.map((todo) =>
-      todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      todo.id === id ? { ...todo, completed: todo.completed } : todo
     );
     setTodos(updatedTodos);
   };
@@ -37,17 +38,18 @@ const TodoList = () => {
   }
 
   return (
-    <div>
+    <div style={{ padding: 24 }}>
       <input
         type="text"
         value={todoText}
         onChange={(e) => setTodoText(e.target.value)}
       />
       <div style={{ border: '1px solid #ddd', marginTop: 12, marginBottom: 12, height: 80 }}>
-        <p style={{ margin: 0 }}>Todo Count: {todoCount}</p>
+        <p style={{margin: 0}}>Buttons</p>
         <button onClick={addTodo}>Add Todo</button>
         <button onClick={saveToServer}>Save Todos</button>
       </div>
+      <p style={{ margin: 0 }}>Todo Count: {todoCount}</p>
       <ul>
         {todos.map((todo, index) => (
           <li>
